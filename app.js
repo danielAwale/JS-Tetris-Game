@@ -44,17 +44,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
 
 
-  let currentPostition = 4
-  let current = theTetrominoes[0][0]
+  let currentPostition = 180
+  let currentRotation = 0
 
-  //draw the first rotation in the first tetromino
+  //randomly selecy a Tetromino and its first rotation
+  let random = Math.floor(Math.random() * theTetrominoes.length)
+  let current = theTetrominoes[random][currentRotation]
+
+  //draw the tetromino
   function draw() {
     current.forEach(index => {
       squares[currentPostition + index].classList.add('tetromino')
     })
   }
 
-  draw()
+  //undraw the tetromino
+  function undraw() {
+    current.forEach(index => {
+      squares[currentPostition + index].classList.remove('tetromino')
+    })
+  }
+
+  //make the tetromino move down every second
+
+  timerId = setInterval(moveDown, 1000)
+
+  function moveDown() {
+    undraw()
+    currentPostition += width
+    draw()
+  }
 })
 
 // a function is a block of code, define it with a name and execute it!
