@@ -42,6 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
   ]
 
   const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
+
+
+  let currentPostition = 4
+  let current = theTetrominoes[0][0]
+
+  //draw the first rotation in the first tetromino
+  function draw() {
+    current.forEach(index => {
+      squares[currentPostition + index].classList.add('tetromino')
+    })
+  }
+
+  draw()
 })
 
 // a function is a block of code, define it with a name and execute it!
