@@ -6,3 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const squareWidth = 10
 
 })
+
+// a function is a block of code, define it with a name and execute it!
+
+// function showAlert(firstName) {
+//   alert(firstName + 'You have been alerted')
+// }
+// showAlert('jason')
