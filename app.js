@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const scoreDisplay = document.querySelector('#score')
   const startButton = document.querySelector('#dtart-button')
   const width = 10
+  let nextRandom = 0
 
   //The Tetrominoes
   const lTetromino = [
@@ -95,10 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
       //start a new tetromino falling
-      random = Math.floor(Math.random() * theTetrominoes.length)
+      random = nextRandom
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
       currentPosition = 4
       draw()
+      displayShape()
     }
   }
 
@@ -142,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayWidth = 4
   let displayIndex = 0
 
+
   // the tetrominos without rotations 
   const upNextTetrominoes = [
     [1, displayWidth + 1, displayWidth * 2 + 1, 2],
@@ -150,6 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
     [0, 1, displayWidth, displayWidth + 1],
     [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
   ]
+
+  //display the shape in the mini grid
+  function displayShape() {
+    // remove any trace of a tetromino form the entire grid
+    displaySquares.forEach(squares => {
+      squares.classList.remove('tetromino')
+    })
+    upNextTetrominoes[nextRandom].forEach(index => {
+      displaySquares[displayIndex + index].classList.add('tetromino')
+    })
+  }
 })
 
 // a function is a block of code, define it with a name and execute it!
