@@ -69,6 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   timerId = setInterval(moveDown, 500)
 
+  // assigns functions to keyCodes
+  function control(e) {
+    if (e.keycode === 37) {
+      moveLeft()
+    }
+  }
+  document.addEventListener('keyup', control)
+
   function moveDown() {
     undraw()
     currentPostition += width
