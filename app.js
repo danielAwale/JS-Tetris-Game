@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
 
 
-  let currentPostition = 0
+  let currentPosition = 4
   let currentRotation = 0
 
   //randomly selecy a Tetromino and its first rotation
@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
   //draw the tetromino
   function draw() {
     current.forEach(index => {
-      squares[currentPostition + index].classList.add('tetromino')
+      squares[currentPosition + index].classList.add('tetromino')
     })
   }
 
   //undraw the tetromino
   function undraw() {
     current.forEach(index => {
-      squares[currentPostition + index].classList.remove('tetromino')
+      squares[currentPosition + index].classList.remove('tetromino')
     })
   }
 
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // assigns functions to keyCodes
   function control(e) {
-    if (e.keycode === 37) {
+    if (e.keyCode === 37) {
       moveLeft()
     }
   }
@@ -79,19 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function moveDown() {
     undraw()
-    currentPostition += width
+    currentPosition += width
     draw()
     freeze()
   }
 
   //freeze 
   function freeze() {
-    if (current.some(index => squares[currentPostition + index + width].classList.contains('taken'))) {
-      current.forEach(index => squares[currentPostition + index].classList.add('taken'))
+    if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+      current.forEach(index => squares[currentPosition + index].classList.add('taken'))
       //start a new tetromino falling
       random = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
-      currentPostition = 4
+      currentPosition = 4
       draw()
     }
   }
@@ -99,10 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
   //move the tetromino left, unless is at the edge or there is a blockage
   function moveLeft() {
     undraw()
-    const isAtLeftEdge = current.som(index => (currentPosition + index) % 10 === 0)
-    if (!isAtLeftEdge) currentPostition -= 1
-    if (current.some(index => squares[currentPostition + index].classList.contains('taken'))) {
-      currentPostition += 1
+    const isAtLeftEdge = current.some(index => (currentPosition + index) % 10 === 0)
+    if (!isAtLeftEdge) currentPosition -= 1
+    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition += 1
     }
     draw()
   }
