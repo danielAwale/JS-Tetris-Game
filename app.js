@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition += 1
     }
-    draw()
+    draw() // code still breaks for some tetriminoes, need to debug
   }
 
   //rotate the tetromino
