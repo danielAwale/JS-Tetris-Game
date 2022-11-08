@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //make the tetromino move down every second
 
-  timerId = setInterval(moveDown, 1000)
+  timerId = setInterval(moveDown, 500)
 
   function moveDown() {
     undraw()
@@ -81,11 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current.some(index => squares[currentPostition + index + width].classList.contains('taken'))) {
       current.forEach(index => squares[currentPostition + index].classList.add('taken'))
       //start a new tetromino falling
-      random = Mah.floor(Math.random() * theTetrominoes.length)
+      random = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
       currentPostition = 4
       draw()
     }
+  }
+
+  //move the tetromino left, unless is at the edge or there is a blockage
+  function moveLeft() {
+    undraw()
+    const isAtLeftEdge = current.som(index => (currentPosition + index) % 10 === 0)
   }
 })
 
