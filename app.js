@@ -142,7 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayWidth = 4
   let displayIndex = 0
 
-
+  // the tetrominos without rotations 
+  const upNextTetrominoes = [
+    [1, displayWidth + 1, displayWidth * 2 + 1, 2],
+    [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
+    [0, displayWidth, displayWidth + 1, displayWidth + 2],
+    [0, 1, displayWidth, displayWidth + 1],
+    [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
+  ]
 })
 
 // a function is a block of code, define it with a name and execute it!
