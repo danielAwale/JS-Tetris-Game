@@ -92,6 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function moveLeft() {
     undraw()
     const isAtLeftEdge = current.som(index => (currentPosition + index) % 10 === 0)
+    if (!isAtLeftEdge) currentPostition -= 1
+    if (current.some(index => squares[currentPostition + index].classList.contains('taken'))) {
+      currentPostition += 1
+    }
+    draw()
   }
 })
 
