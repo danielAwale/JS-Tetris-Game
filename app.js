@@ -136,6 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
     current = theTetrominoes[random][currentRotation]
     draw()
   }
+
+  // show up next tetromino in mini grid display
+  const displaySquares = document.querySelectorAll('.mini-grid div')
+  const displayWidth = 4
+  let displayIndex = 0
+
+
 })
 
 // a function is a block of code, define it with a name and execute it!
