@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (e.keyCode === 39) {
       //move right 
     } else if (e.keyCode === 40) {
-      //movedown ()
+      moveDown()
     }
   }
   document.addEventListener('keyup', control)
@@ -112,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     draw()
   }
+
+  // move the tetromino right, unless is at the edge or there is a blockage
+
 })
 
 // a function is a block of code, define it with a name and execute it!
