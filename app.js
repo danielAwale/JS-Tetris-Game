@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isAtRightEdge) currentPosition += 1
 
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-      currentPosition += 1
+      currentPosition -= 1
     }
     draw() // code still breaks for some tetriminoes, need to debug
   }
