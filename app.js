@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //make the tetromino move down every second
 
-  timerId = setInterval(moveDown, 500)
+  // timerId = setInterval(moveDown, 500)
 
   // assigns functions to keyCodes
   function control(e) {
