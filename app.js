@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let nextRandom = 0
   let timerId = null
   let score = 0
+  const colors = [
+    'orange',
+    'red',
+    'purple',
+    'green',
+    'blue'
+  ]
 
   //The Tetrominoes
   const lTetromino = [
@@ -58,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function draw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.add('tetromino')
+      squares[currentPosition + index].style.backgroundColor = colors[random]
     })
   }
 
@@ -65,12 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function undraw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.remove('tetromino')
+      squares[currentPosition + index].style.backgroundColor = ''
     })
   }
 
   //make the tetromino move down every second
-
-  // timerId = setInterval(moveDown, 500)
 
   // assigns functions to keyCodes
   function control(e) {
@@ -125,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     undraw()
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
     if (!isAtRightEdge) currentPosition += 1
-
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition -= 1
     }
@@ -149,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const displayWidth = 4
   let displayIndex = 0
 
-
   // the tetrominos without rotations 
   const upNextTetrominoes = [
     [1, displayWidth + 1, displayWidth * 2 + 1, 2],
@@ -164,9 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // remove any trace of a tetromino form the entire grid
     displaySquares.forEach(squares => {
       squares.classList.remove('tetromino')
+      squares.style.backgroundColor = ''
     })
     upNextTetrominoes[nextRandom].forEach(index => {
       displaySquares[displayIndex + index].classList.add('tetromino')
+      displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     })
   }
 
@@ -187,13 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function addScore() {
     for (let i = 0; i < 199; i += width) {
       const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9]
-
       if (row.every(index => squares[index].classList.contains('taken'))) {
         score += 10
         scoreDisplay.innerHTML = score
         row.forEach(index => {
           squares[index.classList.remove('taken')]
           squares[index].classList.remove('tetromino')
+          squares[index].style.backgroundColor = ''
         })
         const squaresRemoved = squares.splice(i, width)
         squares = squaresRemoved.concat(squares)
@@ -210,10 +217,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 })
-
-// a function is a block of code, define it with a name and execute it!
-
-// function showAlert(firstName) {
-//   alert(firstName + 'You have been alerted')
-// }
-// showAlert('jason')
