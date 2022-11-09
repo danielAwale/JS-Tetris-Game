@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
   let squares = Array.from(document.querySelectorAll('.grid div'))
   const scoreDisplay = document.querySelector('#score')
-  const startButton = document.querySelector('#dtart-button')
+  const startButton = document.querySelector('#start-button')
   const width = 10
   let nextRandom = 0
   let timerId = null
@@ -178,6 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
       nextRandom = Math.floor(Math.random() * theTetrominoes.length)
     }
   })
+
+  //add score
+  function addScore() {
+
+  }
 })
 
 // a function is a block of code, define it with a name and execute it!
