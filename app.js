@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const upNextTetrominoes = [
     [1, displayWidth + 1, displayWidth * 2 + 1, 2],
     [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
-    [0, displayWidth, displayWidth + 1, displayWidth + 2],
+    [1, displayWidth, displayWidth + 1, displayWidth + 2],
     [0, 1, displayWidth, displayWidth + 1],
     [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
   ]
@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       draw()
       timerId = setInterval(moveDown, 1000)
       nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+      displayShape()
     }
   })
 
