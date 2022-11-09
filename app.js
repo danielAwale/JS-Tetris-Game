@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.querySelector('#start-button')
   const width = 10
   let nextRandom = 0
-  let timerId = null
+  let timerId
   let score = 0
   const colors = [
     'orange',
@@ -76,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentPosition + index].style.backgroundColor = ''
     })
   }
-
-  //make the tetromino move down every second
 
   // assigns functions to keyCodes
   function control(e) {
