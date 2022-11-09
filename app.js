@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startButton = document.querySelector('#dtart-button')
   const width = 10
   let nextRandom = 0
+  let timerId = null
 
   //The Tetrominoes
   const lTetromino = [
@@ -165,6 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySquares[displayIndex + index].classList.add('tetromino')
     })
   }
+
+  //add functionality to the button
+  startButton.addEventListener('click', () => {
+    if (timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      draw()
+      timerId = setInterval(moveDown, 1000)
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length)
+    }
+  })
 })
 
 // a function is a block of code, define it with a name and execute it!
